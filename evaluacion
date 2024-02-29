@@ -1,0 +1,36 @@
+"""
+Programa: eva01.py
+Alumno:alexis 
+Matricula:1723110656
+Fecha:29/01/2024
+"""
+class profesores():
+  id = None
+  nombre = "alexis"
+  materias = [0]
+
+
+  def _init_(self, id, nombre):
+   self.id = id
+   self.nombre = nombre
+   print("Constructor_objeto - Profesor")
+
+
+  def califica(0)
+   print"El profesor {1} califica evaluaciones de la materia [1]"(nombre,materias[0])
+
+
+  def pasaAsistencia(1):
+   print (el profesor 1 pasa asistencia)
+
+class materias():
+  nombre = "matematicas"
+  profesor = "alexis"
+  calificaciones = [0]
+
+
+profesor1 = profesor("1","Profesor 1")
+profesor1.materias.append("Materia 1")
+profesor1.materias.append("Materia 2")
+profesor1.Califica(1)
+profesor1.pasaAsistencia(1)

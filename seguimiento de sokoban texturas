@@ -1,0 +1,107 @@
+import os
+class Soko:
+
+    mapa = [] # mapa del juego
+    personaje_columna = 0
+    personaje_fila = 0
+    textura=[]
+
+
+    def __init__(self):
+       self.textura = {
+          0: "❤",
+          1: "📦",
+          2: "🚩",
+          3: "🦁",
+          4: "⬜",
+          }
+       self.mapa = [
+          [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+          [3, 4, 4, 4, 4, 4, 4, 4, 4, 3],
+          [3, 4, 0, 1, 4, 4, 2, 4, 4, 3],
+          [3, 4, 4, 4, 4, 4, 4, 4, 4, 3],
+          [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+          ]
+       self.caja_columna=3
+       self.caja_fila=3
+       self.personaje_columna=2
+       self.personaje_fila=2
+
+    def imprimirMapa(self):
+       for filas in self.mapa:
+        fila_textura=[self.textura[numero]for numero in filas]
+        print(" ".join(fila_textura))
+    def movimiento1(self):
+        # Donde estaba el persona pone un piso
+        self.mapa[self.personaje_fila][self.personaje_columna] = 4
+        # Donde estaba el piso pone al personaje
+        self.mapa[self.personaje_fila][self.personaje_columna + 1] = 0
+        # Actualiza la posicion del personaje
+        self.personaje_columna+=1
+
+    def derecha(self):
+        # Movimiento 1: [0,4] -> [4,0]
+        if self.mapa[self.personaje_fila][self.personaje_columna] == 0 and self.mapa[self.personaje_fila][self.personaje_columna + 1] == 4:
+            self.movimiento1()
+
+
+
+    def movimiento2(self): # izquierda
+        self.mapa[self.personaje_fila][self.personaje_columna -1 ] = 0
+                    # Donde estaba el personaje pone el piso
+        self.mapa[self.personaje_fila][self.personaje_columna] = 4
+                    # Actualiza la posicion del personaje
+        self.personaje_columna-=1
+
+    def izquierda(self):
+        if self.mapa[self.personaje_fila][self.personaje_columna -1] == 4 and self.mapa[self.personaje_fila][self.personaje_columna] == 0:
+            self.movimiento2()       
+
+   # Movimiento hacia arriba
+    def movimientoArriba(self):
+        # Donde estaba el personaje pone un piso
+        self.mapa[self.personaje_fila][self.personaje_columna] = 4
+        # Donde estaba el piso pone al personaje
+        self.mapa[self.personaje_fila - 1][self.personaje_columna] = 0
+        # Actualiza la posicion del personaje
+        self.personaje_fila -= 1
+
+    def arriba(self):
+        # Movimiento 1: [0,4] -> [4,0]
+        if self.mapa[self.personaje_fila][self.personaje_columna] == 0 and self.mapa[self.personaje_fila - 1][
+           self.personaje_columna] == 4:
+           self.movimientoArriba()
+    def movimientoabajo(self):
+      self.mapa[self.personaje_fila][self.personaje_columna] = 4
+      # Donde estaba el piso pone al personaje
+      self.mapa[self.personaje_fila + 1][self.personaje_columna] = 0
+      # Actualiza la posicion del personaje
+      self.personaje_fila += 1
+    def abajo(self):
+      # Movimiento 1: [0,4] -> [4,0]
+        if self.mapa[self.personaje_fila][self.personaje_columna] == 0 and self.mapa[self.personaje_fila + 1][
+          self.personaje_columna] == 4:
+          self.movimientoabajo()
+    def limpiar_pantalla(self):
+      os.system('cls' if os.name == 'nt' else 'clear')
+    def jugar(self):
+        while True:
+          #llamar la funcion de limpiar de pantalla
+          self.limpiar_pantalla()
+        # Imprime el mapa
+          self.imprimirMapa()
+           # Pide al usuario el movimiento
+          movimiento = input("Selecciona el movimiento: ")
+           # Moverse a la derecha
+          if movimiento == 'd':
+            self.derecha()
+           # Moverse a la izquierda
+          elif movimiento == 'a':
+            self.izquierda()
+          # Moverse hacia arriba
+          elif movimiento == 'w':
+            self.arriba()
+          elif movimiento == 's':
+            self.abajo()
+soko = Soko()
+soko.jugar()

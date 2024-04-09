@@ -1,0 +1,18 @@
+def movimientoabajo(self):
+      self.mapa[self.personaje_fila][self.personaje_columna] = 4
+      # Donde estaba el piso pone al personaje
+      self.mapa[self.personaje_fila + 1][self.personaje_columna] = 0
+      # Actualiza la posicion del personaje
+      self.personaje_fila += 1
+    def abajo(self):
+        if self.mapa[self.personaje_fila][self.personaje_columna] == 0 and self.mapa[self.personaje_fila + 1][
+          self.personaje_columna] == 4:
+          self.movimientoabajo()
+        # Si hay una caja abajo del personaje
+        elif self.mapa[self.personaje_fila][self.personaje_columna] == 0 and self.mapa[self.personaje_fila + 1][self.personaje_columna] == 1:
+            # Movimiento 2: [0,1,4] -> [4,0,1]
+            if self.mapa[self.personaje_fila + 2][self.personaje_columna] == 4:
+                # Mueve la caja si hay espacio
+                self.mapa[self.personaje_fila + 2][self.personaje_columna] = 1
+                self.mapa[self.personaje_fila + 1][self.personaje_columna] = 0
+                self.movimientoabajo()

@@ -18,7 +18,7 @@ class Soko:
           1: "📦",#caja
           2: "🏁",#meta
           3: "👻",#pared
-          4: "🍒",#piso
+          4: "  ",#piso
           5: "🐎",#personaje_meta
           6: "📦",#caja_meta
           

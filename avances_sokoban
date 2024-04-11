@@ -1,36 +1,5 @@
-import os
-class Soko:
 
-    mapa = [] # mapa del juego
-    personaje_columna = 0
-    personaje_fila = 0
-    textura=[]
-
-
-    def __init__(self):
-       self.textura = {
-          0: "🐎",
-          1: "📦",
-          2: "🚩",
-          3: "👻",
-          4: "  ",
-          5: "😎",
-          6: ""
-          }
-       self.mapa = [
-          [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-          [3, 4, 4, 4, 4, 4, 4, 4, 4, 3],
-          [3, 4, 0, 1, 4, 4, 2, 4, 4, 3],
-          [3, 4, 4, 4, 4, 4, 4, 4, 4, 3],
-          [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
-          ]
-       self.personaje_columna=2
-       self.personaje_fila=2
-
-    def imprimirMapa(self):
-       for filas in self.mapa:
-        fila_textura=[self.textura[numero]for numero in filas]
-        print(" ".join(fila_textura))
+         
 
     def movimiento1(self):
         # Donde estaba el persona pone un piso

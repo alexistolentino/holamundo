@@ -1,4 +1,43 @@
+       
+       import os
+import time
+import threading
+class Soko:
 
+    mapa = [] # mapa del juego
+    personaje_columna = 0
+    personaje_fila = 0
+    textura=[]
+    tiempo_jugado = 0
+    pasos=0
+
+
+    def __init__(self):
+       self.textura = {
+          0: "🐎",#personaje
+          1: "📦",#caja
+          2: "🏁",#meta
+          3: "👻",#pared
+          4: "🍒",#piso
+          5: "🐎",#personaje_meta
+          6: "📦",#caja_meta
+          
+          }
+       self.mapa = [
+          [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+          [3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3],
+          [3, 4, 0, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 3],
+          [3, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 3],
+          [3, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 3],
+          [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+          ]
+       self.personaje_columna=2
+       self.personaje_fila=2
+
+    def imprimirMapa(self):
+       for filas in self.mapa:
+        fila_textura=[self.textura[numero]for numero in filas]
+        print(" ".join(fila_textura))
          
 
     def movimiento1(self):
